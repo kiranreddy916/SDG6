@@ -1,0 +1,46 @@
+/* Design tokens — palette drawn from deep water and the SDG 6 identity. */
+:root {
+  /* Ink and paper */
+  --ink: #0b2230;          /* deep water */
+  --ink-2: #1d3a4a;
+  --ink-3: #2c5266;
+  --text: #13242d;
+  --muted: #4d6470;        /* 5.9:1 on --paper */
+  --paper: #f5f8f7;
+  --paper-2: #e8efee;
+  --white: #ffffff;
+  --line: #cad8da;
+  --line-strong: #93aab1;
+
+  /* Water accents */
+  --sdg6: #26bde2;         /* official SDG 6 cyan: graphics / text on dark only */
+  --sdg6-text: #086a8a;    /* cyan family, accessible on light (6:1) */
+  --treated: #2a7a6a;      /* treated / reused water */
+  --treated-2: #6fb7a5;
+  --treated-3: #b9ddd3;
+
+  /* On dark */
+  --on-ink: #eaf4f6;
+  --on-ink-muted: #a8c2cc;
+  --on-ink-line: rgba(168, 194, 204, 0.28);
+
+  /* Type */
+  --font-display: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-body: 'Public Sans', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+
+  --step--1: clamp(0.82rem, 0.79rem + 0.12vw, 0.88rem);
+  --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.08rem);
+  --step-1: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
+  --step-2: clamp(1.45rem, 1.3rem + 0.7vw, 1.9rem);
+  --step-3: clamp(1.9rem, 1.6rem + 1.4vw, 2.85rem);
+  --step-4: clamp(2.6rem, 1.9rem + 3.4vw, 5.2rem);
+
+  /* Space */
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  --section: clamp(3rem, 2.25rem + 3vw, 5rem);   /* top/bottom padding of every main section */
+  --header-h: 4.25rem;
+  --wrap: 78rem;
+
+  --radius: 2px;
+  --focus: 0 0 0 3px var(--paper), 0 0 0 5px var(--sdg6-text);
+}

@@ -1,0 +1,16 @@
+{
+  "name": "srmap-sdg6-clean-water",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SRM University-AP · SDG 6 Clean Water and Sanitation public web page",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs . 5173",
+    "samples": "node scripts/sample-reports.mjs",
+    "build": "node scripts/sample-reports.mjs && node scripts/build.mjs",
+    "preview": "npm run build && node scripts/serve.mjs dist 5174"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

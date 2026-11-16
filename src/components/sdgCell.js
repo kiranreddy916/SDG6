@@ -36,10 +36,10 @@ export function footer() {
   return `
   <footer class="site-footer">
     <div class="wrap site-footer__inner">
-      <p class="site-footer__id">
-        <img src="${esc(site.sdgTile.src)}" alt="" width="40" height="40">
-        <span><strong>${esc(site.universityLong)}</strong><br>SDG 6 · Clean Water and Sanitation</span>
-      </p>
+      <div class="site-footer__id">
+        <span class="site-footer__logo"><img src="${esc(site.logo.src)}" alt="${esc(site.logo.alt)}" width="${site.logo.width}" height="${site.logo.height}" loading="lazy"></span>
+        <span>SDG 6 · Clean Water and Sanitation</span>
+      </div>
       <p class="site-footer__note">Water figures on this page are for calendar year 2025 as reported by the university. Annual SDG 6 reports are organised by academic year (2024–25, 2025–26).</p>
       <p class="site-footer__top"><a href="#top">Back to top <span aria-hidden="true">↑</span></a></p>
     </div>

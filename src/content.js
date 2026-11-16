@@ -73,6 +73,12 @@ export const site = {
   location: 'Amaravati, Andhra Pradesh',
   /* Set to the real Sustainability home page URL when available. */
   sustainabilityHomeUrl: null,
+  /* Official SRM University–AP logo and site icon, as published on
+     https://www.srmap.edu.in/ (header logo and favicon). Do not recolour or
+     redraw them; replace the files if the university supplies new versions. */
+  logo: { src: 'assets/brand/srm-university-ap-logo.png', alt: 'SRM University–AP, Andhra Pradesh', width: 350, height: 126 },
+  icon: 'assets/brand/srm-university-ap-icon.png',
+  /* The SDG 6 tile marks the page's goal (hero), not the university. */
   sdgTile: { src: 'assets/images/sdg6_tile.png', alt: 'UN Sustainable Development Goal 6: Clean Water and Sanitation' },
   nav: [
     { id: 'figures',   label: '2025 figures' },
@@ -135,14 +141,41 @@ export const figures = {
 
 /* ------------------------------------------------------------------ */
 /* How water moves through campus (summary of the source text)        */
+/* Main flow, left to right. Every point is taken from the SDG 6      */
+/* source text; no steps or figures are added.                        */
 /* ------------------------------------------------------------------ */
-export const waterLoop = [
-  { stage: 'Sources', points: ['CRDA supply from the Krishna River (300 kL/day raw water)', 'Kondaveeti Vagu', 'Tanker water at Phase 1 and Phase 2', 'Rainwater recharging groundwater'], href: '#extraction' },
-  { stage: 'Treatment & storage', points: ['Centralised RO plants with UV treatment and chlorine dosing', 'Water treatment plants with daily logbooks', 'Stainless steel tanks for drinking water'], href: '#drinking-water' },
-  { stage: 'Metered use', points: ['Meters on Towers 1–5, the dormitory, the canteen and the JC Bose block', 'Two electromagnetic flow meters in the plant area', '190 free drinking-water points'], href: '#measurement' },
-  { stage: 'Wastewater treatment', points: ['Four STPs, 1,943 kL/day combined', 'Two aeration-based, two chemical-free Bio STPs', 'Treated water returned to campus use, not discharged'], href: '#wastewater' },
-  { stage: 'Reuse', points: ['Toilet flushing, cooling and gardening', 'Delivered by a hydro-pneumatic system', '143,535 kL reused in 2025'], href: '#reuse' },
-];
+export const waterFlow = {
+  title: 'How water moves through campus',
+  stages: [
+    {
+      stage: 'Water sources', href: '#extraction',
+      points: ['CRDA supply (Krishna River)', 'Kondaveeti Vagu', 'River water pumped to the CRDA sump', 'Tanker water at Phase 1 and Phase 2'],
+    },
+    {
+      stage: 'Treatment & storage', href: '#drinking-water',
+      points: ['RO plants with UV treatment and chlorine dosing for drinking water', 'Stainless steel tanks for drinking water; raw water in an underground tank', 'Separate pipelines for domestic and flush water'],
+    },
+    {
+      stage: 'Campus use', href: '#measurement',
+      points: ['Metered at Towers 1–5, the dormitory, the canteen and the JC Bose block', 'Two electromagnetic flow meters in the plant area', 'Free drinking water at 190 points'],
+    },
+    {
+      stage: 'Wastewater treatment', href: '#wastewater',
+      points: ['Four sewage treatment plants (STPs)', '1,943 kL/day combined capacity', 'Two aeration-based, two chemical-free Bio STPs'],
+    },
+    {
+      stage: 'Reuse', href: '#reuse',
+      points: ['Toilet flushing (75%)', 'Cooling (20%)', 'Gardening (5%)'],
+      note: 'Shares of 143,535 kL reused in 2025, delivered by a hydro-pneumatic system.',
+    },
+  ],
+  /* Separate branch: not part of the wastewater reuse flow. */
+  rainBranch: {
+    label: 'Separate branch · rainwater',
+    href: '#extraction',
+    steps: ['Rainwater from rooftops and road run-off', '11 rainwater-harvesting systems', 'Groundwater recharge'],
+  },
+};
 
 /* ------------------------------------------------------------------ */
 /* Campus chapters                                                    */

@@ -26,6 +26,7 @@ To deploy, upload the contents of `dist/` to any static host.
 | `styles/layout.css`, `styles/sections.css` | Layout and section styles |
 | `styles/water.css` | The few water effects (hero waterline, wave edges, pipe flow, bar fills, reading line) — all still under reduced motion |
 | `assets/images/` | Photos and the SDG 6 tile, taken from inside the SDG 6 `.docx` (the frames the Word layout drew around the photos were cropped off) |
+| `assets/brand/` | Official SRM University–AP logo and site icon, as published on www.srmap.edu.in (header logo and favicon). Used unaltered; replace with university-supplied files if available |
 | `reports/samples/` | **Demo sample reports** (generated — do not edit by hand) |
 | `scripts/sample-reports.mjs` | Generates the demo sample reports from `src/content.js` |
 | `scripts/serve.mjs`, `scripts/build.mjs` | Zero-dependency dev server and pre-render build |

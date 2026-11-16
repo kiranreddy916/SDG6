@@ -18,11 +18,14 @@
   min-height: var(--header-h);
 }
 
-.brand { display: flex; align-items: center; gap: 0.75rem; color: var(--ink); text-decoration: none; min-width: 0; }
-.brand__tile { width: 44px; height: 44px; flex: none; }
-.brand__text { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
-.brand__name { font-weight: 700; font-size: 1rem; letter-spacing: 0.01em; }
-.brand__sub { font-size: var(--step--1); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Brand: the official SRM University–AP logo (350 × 126 source, shown at
+   44px tall so it stays sharp on high-density screens), then the page name. */
+.brand { display: flex; align-items: center; gap: 0.9rem; color: var(--ink); text-decoration: none; min-width: 0; }
+.brand__logo { height: 44px; width: auto; flex: none; }
+.brand__sub {
+  padding-left: 0.9rem; border-left: 1px solid var(--line-strong); line-height: 1.25;
+  font-size: var(--step--1); font-weight: 600; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 
 .site-nav__list { display: flex; gap: 0.25rem; }
 .site-nav__list a {
@@ -58,7 +61,7 @@
 
 @media (max-width: 899px) {
   :root { --header-h: 3.75rem; }
-  .brand__tile { width: 38px; height: 38px; }
+  .brand__logo { height: 38px; }
   .site-nav__toggle { display: inline-flex; }
   .site-nav__list {
     display: none; position: absolute; left: 0; right: 0; top: 100%;
@@ -72,8 +75,10 @@
   .site-nav__list a::after { left: 0; right: auto; width: 2rem; bottom: -1px; }
   .crumbs { display: none; }
 }
-@media (max-width: 380px) {
+@media (max-width: 559px) {
   .brand__sub { display: none; }
+}
+@media (max-width: 380px) {
   .site-nav__toggle { padding: 0.65rem 0.7rem; }
   .site-nav__toggle-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
@@ -102,7 +107,9 @@
   gap: clamp(2rem, 1rem + 4vw, 5rem); align-items: center;
 }
 .hero__goal { display: flex; align-items: center; gap: 1rem; font-size: 0.86rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem; }
-.hero__goal img { width: 72px; height: 72px; flex: none; }
+/* Official logo, unaltered, on a light panel (it is dark olive on transparent). */
+.hero__logo { flex: none; display: inline-block; background: var(--paper); padding: 0.6rem 0.85rem; border-radius: var(--radius); }
+.hero__logo img { display: block; height: 56px; width: auto; }
 .hero__goal-uni { color: var(--on-ink-muted); font-weight: 500; letter-spacing: 0.04em; text-transform: none; font-size: 0.92rem; }
 .hero h1 { font-size: var(--step-4); font-weight: 500; line-height: 1; letter-spacing: -0.025em; max-width: 11ch; }
 .hero__lede {
@@ -123,14 +130,17 @@
 
 @media (max-width: 899px) {
   .hero__inner { grid-template-columns: 1fr; }
-  .hero__goal img { width: 56px; height: 56px; }
+  .hero__logo img { height: 46px; }
 }
 
 /* ===== Footer ===== */
 .site-footer { background: var(--ink); color: var(--on-ink-muted); font-size: 0.9rem; padding-block: 2.5rem; }
 .site-footer__inner { display: grid; grid-template-columns: auto 1fr auto; gap: 1.5rem 3rem; align-items: center; }
-.site-footer__id { display: flex; gap: 0.85rem; align-items: center; margin: 0; color: var(--on-ink); line-height: 1.4; }
-.site-footer__id img { width: 40px; height: 40px; }
+.site-footer__id { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; margin: 0; color: var(--on-ink); line-height: 1.4; }
+/* The logo is dark olive, so on the navy footer it sits on a light panel
+   rather than being recoloured. */
+.site-footer__logo { display: inline-block; background: var(--paper); padding: 0.55rem 0.8rem; border-radius: var(--radius); }
+.site-footer__logo img { display: block; height: 40px; width: auto; }
 .site-footer__note { margin: 0; max-width: 52ch; }
 .site-footer a { color: var(--on-ink); }
 .site-footer a:focus-visible { box-shadow: 0 0 0 3px var(--ink), 0 0 0 5px var(--sdg6); }

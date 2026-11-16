@@ -1,22 +1,39 @@
 import { esc, join, prose } from '../lib/html.js';
-import { campus, waterLoop } from '../content.js';
+import { campus, waterFlow } from '../content.js';
 import { photo, reportList, sectionHead, factList } from './shared.js';
 
 const pad = (i) => String(i + 1).padStart(2, '0');
 
-function loop() {
+/* Flow arrow: a line with a head. Points right on wide screens and is
+   rotated to point down when the stages stack (see .flow__arrow in CSS). */
+const arrow = `<span class="flow__arrow" aria-hidden="true"><svg viewBox="0 0 40 14" focusable="false"><path class="flow__arrow-line" d="M1 7H34"/><path d="M29 1.5 36.5 7 29 12.5"/></svg></span>`;
+
+/* "How water moves through campus": a numbered timeline from source to
+   reuse (circles joined by a line), and rainwater harvesting as a separate
+   branch that does not join it. */
+function flow() {
+  const f = waterFlow;
+  const b = f.rainBranch;
   return `
-  <div class="loop" aria-labelledby="loop-title" data-reveal="once">
-    <h3 class="loop__title" id="loop-title">How water moves through campus</h3>
-    <ol class="loop__stages" role="list">
-      ${join(waterLoop, (s, i) => `
-      <li class="loop__stage">
-        <span class="loop__node" aria-hidden="true">${pad(i)}</span>
+  <div class="flow" role="group" aria-labelledby="flow-title" data-reveal="once">
+    <h3 class="flow__title" id="flow-title">${esc(f.title)}</h3>
+    <ol class="flow__main" role="list" aria-label="Main water flow, from source to reuse">
+      ${join(f.stages, (s, i) => `
+      <li class="flow__stage flow__stage--${i + 1}">
+        <span class="flow__node" aria-hidden="true">${pad(i)}</span>
         <h4><a href="${esc(s.href)}">${esc(s.stage)}</a></h4>
         <ul role="list">${join(s.points, (p) => `<li>${prose(p)}</li>`)}</ul>
+        ${s.note ? `<p class="flow__note">${prose(s.note)}</p>` : ''}
       </li>`)}
     </ol>
-    <p class="loop__return"><span aria-hidden="true">↺</span> Treated water returns to campus use instead of being discharged.</p>
+
+    <div class="flow__branch">
+      <p class="flow__branch-label" id="flow-branch-label">${esc(b.label)}</p>
+      <ol class="flow__branch-steps" role="list" aria-labelledby="flow-branch-label">
+        ${join(b.steps, (st, i) => `<li>${i === b.steps.length - 1 ? `<a href="${esc(b.href)}">${esc(st)}</a>` : esc(st)}${i < b.steps.length - 1 ? arrow : ''}</li>`)}
+      </ol>
+      <p class="flow__branch-note">Rainwater recharges groundwater; it is not part of the wastewater reuse flow.</p>
+    </div>
   </div>`;
 }
 
@@ -80,7 +97,7 @@ export function campusSection() {
   <section class="campus" id="campus" aria-labelledby="campus-title">
     <div class="wrap">
       ${sectionHead({ id: 'campus', no: '02', eyebrow: 'Water systems and campus management', title: 'On campus: every drop accounted for', intro: campus.intro })}
-      ${loop()}
+      ${flow()}
       <div class="campus__layout">
         <nav class="toc" aria-label="Campus topics">
           <p class="toc__title">Campus topics</p>

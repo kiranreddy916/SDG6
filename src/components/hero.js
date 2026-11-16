@@ -15,8 +15,8 @@ export function heroSection() {
     <div class="hero__inner wrap">
       <div class="hero__copy">
         <p class="hero__goal">
-          <img src="${esc(site.sdgTile.src)}" alt="${esc(site.sdgTile.alt)}" width="72" height="72">
-          <span>${esc(hero.goal)}<br><span class="hero__goal-uni">${esc(site.universityLong)}</span></span>
+          <span class="hero__logo"><img src="${esc(site.logo.src)}" alt="${esc(site.logo.alt)}" width="${site.logo.width}" height="${site.logo.height}"></span>
+          <span>${esc(hero.goal)}</span>
         </p>
         <h1 id="hero-title">${esc(hero.title)}</h1>
         <p class="hero__lede">${esc(hero.lede)}</p>

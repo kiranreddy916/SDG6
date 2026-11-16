@@ -11,11 +11,8 @@ export function header() {
   <header class="site-header" data-header>
     <div class="site-header__inner wrap">
       <a class="brand" href="#top" aria-label="${esc(site.university)} — SDG 6, back to top">
-        <img class="brand__tile" src="${esc(site.sdgTile.src)}" alt="" width="44" height="44">
-        <span class="brand__text">
-          <span class="brand__name">${esc(site.university)}</span>
-          <span class="brand__sub">SDG 6 · Clean Water and Sanitation</span>
-        </span>
+        <img class="brand__logo" src="${esc(site.logo.src)}" alt="${esc(site.logo.alt)}" width="${site.logo.width}" height="${site.logo.height}">
+        <span class="brand__sub">SDG 6 · Clean Water and Sanitation</span>
       </a>
 
       <nav class="site-nav" aria-label="On this page">

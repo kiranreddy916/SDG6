@@ -38,10 +38,19 @@
 .wave-edge--top { top: -1px; transform: scaleY(-1); }
 .wave-edge--top path { fill: var(--white); }       /* campus section above */
 .wave-edge--bottom { bottom: -1px; transform: scaleX(-1); }
-.wave-edge--bottom path { fill: var(--paper); }    /* evidence section below */
+.wave-edge--bottom path { fill: var(--paper-2); }  /* SDG Cell section below */
 
-/* ----- Flow arrows in "How water moves through campus": a slow dash runs
-         along each arrow line in the direction of flow. ----- */
+/* ----- "How water moves through campus": a slow run of light dashes along
+         the timeline line, and along the rainwater branch arrows. ----- */
+.flow__main::after {
+  content: ''; position: absolute; left: calc(var(--node) / 2); right: 0; top: calc(var(--node) / 2); height: 2px; transform: translateY(-50%);
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.85) 0 10px, transparent 10px 34px);
+  animation: pipe-flow 2.4s linear infinite; pointer-events: none;
+}
+@keyframes pipe-flow { from { background-position: 0 0; } to { background-position: 34px 0; } }
+@media (max-width: 999px) {
+  .flow__main::after { display: none; }   /* stacked view uses plain segments */
+}
 .flow__arrow-line { stroke-dasharray: 5 4; animation: flow-dash 1.6s linear infinite; }
 @keyframes flow-dash { to { stroke-dashoffset: -18; } }
 
@@ -62,16 +71,16 @@
 .motion-ok [data-reveal].is-reset .share__fill,
 .motion-ok [data-reveal].is-reset .ratio span,
 .motion-ok [data-reveal].is-reset .breakdown__bar .seg { transition: none; }
-/* Flow stages settle in once, in order, the first time they come into view. */
-.motion-ok .flow[data-reveal] .flow__stage { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; }
-.motion-ok .flow[data-reveal].is-revealed .flow__stage { opacity: 1; transform: none; }
-.motion-ok .flow[data-reveal] .flow__stage--2 { transition-delay: 0.1s; }
-.motion-ok .flow[data-reveal] .flow__stage--3 { transition-delay: 0.2s; }
-.motion-ok .flow[data-reveal] .flow__stage--4 { transition-delay: 0.3s; }
-.motion-ok .flow[data-reveal] .flow__stage--5 { transition-delay: 0.4s; }
+/* Timeline circles appear once, in order, the first time they come into view. */
+.motion-ok .flow[data-reveal] .flow__node { transform: scale(0.6); opacity: 0; transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 1), opacity 0.4s ease; }
+.motion-ok .flow[data-reveal].is-revealed .flow__node { transform: none; opacity: 1; }
+.motion-ok .flow[data-reveal] .flow__stage--2 .flow__node { transition-delay: 0.12s; }
+.motion-ok .flow[data-reveal] .flow__stage--3 .flow__node { transition-delay: 0.24s; }
+.motion-ok .flow[data-reveal] .flow__stage--4 .flow__node { transition-delay: 0.36s; }
+.motion-ok .flow[data-reveal] .flow__stage--5 .flow__node { transition-delay: 0.48s; }
 
 /* ----- Reduced motion: everything above is still. ----- */
 @media (prefers-reduced-motion: reduce) {
-  .waterline svg, .flow__arrow-line { animation: none !important; }
+  .waterline svg, .flow__main::after, .flow__arrow-line { animation: none !important; }
   .site-header__progress { transition: none; }
 }

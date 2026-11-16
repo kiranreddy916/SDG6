@@ -8,7 +8,7 @@ export function sdgCellSection() {
   <section class="cell" id="sdg-cell" aria-labelledby="sdg-cell-title">
     <div class="wrap cell__grid">
       <div>
-        ${sectionHead({ id: 'sdg-cell', no: '05', eyebrow: 'Who reports on SDG 6', title: 'The SDG Cell' })}
+        ${sectionHead({ id: 'sdg-cell', no: '04', eyebrow: 'Who reports on SDG 6', title: 'The SDG Cell' })}
         <p class="cell__about">${esc(sdgCell.about)}</p>
         <p class="muted">${esc(sdgCell.governance)}</p>
         <ul class="people" role="list">

@@ -8,8 +8,9 @@ const pad = (i) => String(i + 1).padStart(2, '0');
    rotated to point down when the stages stack (see .flow__arrow in CSS). */
 const arrow = `<span class="flow__arrow" aria-hidden="true"><svg viewBox="0 0 40 14" focusable="false"><path class="flow__arrow-line" d="M1 7H34"/><path d="M29 1.5 36.5 7 29 12.5"/></svg></span>`;
 
-/* "How water moves through campus": the main flow from source to reuse,
-   and rainwater harvesting as a separate branch that does not join it. */
+/* "How water moves through campus": a numbered timeline from source to
+   reuse (circles joined by a line), and rainwater harvesting as a separate
+   branch that does not join it. */
 function flow() {
   const f = waterFlow;
   const b = f.rainBranch;
@@ -19,13 +20,10 @@ function flow() {
     <ol class="flow__main" role="list" aria-label="Main water flow, from source to reuse">
       ${join(f.stages, (s, i) => `
       <li class="flow__stage flow__stage--${i + 1}">
-        <div class="flow__head">
-          <span class="flow__no" aria-hidden="true">${pad(i)}</span>
-          <h4><a href="${esc(s.href)}">${esc(s.stage)}</a></h4>
-        </div>
+        <span class="flow__node" aria-hidden="true">${pad(i)}</span>
+        <h4><a href="${esc(s.href)}">${esc(s.stage)}</a></h4>
         <ul role="list">${join(s.points, (p) => `<li>${prose(p)}</li>`)}</ul>
         ${s.note ? `<p class="flow__note">${prose(s.note)}</p>` : ''}
-        ${i < f.stages.length - 1 ? arrow : ''}
       </li>`)}
     </ol>
 

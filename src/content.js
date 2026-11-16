@@ -78,14 +78,15 @@ export const site = {
      redraw them; replace the files if the university supplies new versions. */
   logo: { src: 'assets/brand/srm-university-ap-logo.png', alt: 'SRM University–AP, Andhra Pradesh', width: 350, height: 126 },
   icon: 'assets/brand/srm-university-ap-icon.png',
-  /* The SDG 6 tile marks the page's goal (hero), not the university. */
+  /* SDG 6 tile: kept in assets but no longer shown; the page's SDG 6 identity
+     comes from its title, hero heading and text. */
   sdgTile: { src: 'assets/images/sdg6_tile.png', alt: 'UN Sustainable Development Goal 6: Clean Water and Sanitation' },
   nav: [
     { id: 'figures',   label: '2025 figures' },
     { id: 'campus',    label: 'On campus' },
     { id: 'community', label: 'Community' },
-    { id: 'evidence',  label: 'Reports' },
     { id: 'sdg-cell',  label: 'SDG Cell' },
+    { id: 'evidence',  label: 'Reports' },
   ],
 };
 

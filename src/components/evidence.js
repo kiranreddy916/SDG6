@@ -17,7 +17,7 @@ export function evidenceSection() {
   return `
   <section class="evidence" id="evidence" aria-labelledby="evidence-title">
     <div class="wrap">
-      ${sectionHead({ id: 'evidence', no: '04', eyebrow: 'Evidence and resources', title: 'Reports, policy and procedures', intro: evidence.intro })}
+      ${sectionHead({ id: 'evidence', no: '05', eyebrow: 'Evidence and resources', title: 'Reports, policy and procedures', intro: evidence.intro })}
 
       <div class="evidence__annual" id="docs-annual">
         <h3 class="minor-head">SDG 6 annual reports <span class="tag">By academic year</span></h3>

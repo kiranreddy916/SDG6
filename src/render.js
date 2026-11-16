@@ -16,8 +16,8 @@ export function renderPage() {
     figuresSection(),
     campusSection(),
     communitySection(),
-    evidenceSection(),
     sdgCellSection(),
+    evidenceSection(),
     `</main>`,
     footer(),
   ].join('\n');
